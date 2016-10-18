@@ -86,28 +86,32 @@ public class BinaryCalculator {
 
     private void decimalToBinary(BinaryCalculator binaryCalculator, Integer binaryNumberUserInput) {
 
-        Integer signedMagnitude = 0;
         String binaryString = "";
 
 
-        //"signed magnitude"
-        if (binaryNumberUserInput >= 0) {
-            binaryString = String.format("%" + NUMBER_BITS + "s", Integer.toBinaryString(binaryNumberUserInput)).replace(" ", "0");
-        } else {
-            Integer flippedSignInt = binaryNumberUserInput*-1;
-            binaryString = "1" + String.format("%" + (NUMBER_BITS-1) +"s", Integer.toBinaryString(flippedSignInt)).replace(" ", "0");
-        }
-        binaryCalculator.printDecimalToBinary("signed magnitude", binaryString);
+        if (binaryNumberUserInput != LOWER_BOUND) {
+            //"signed magnitude"
+            if (binaryNumberUserInput >= 0) {
+                binaryString = String.format("%" + NUMBER_BITS + "s", Integer.toBinaryString(binaryNumberUserInput)).replace(" ", "0");
+            } else {
+                Integer flippedSignInt = binaryNumberUserInput*-1;
+                binaryString = "1" + String.format("%" + (NUMBER_BITS-1) +"s", Integer.toBinaryString(flippedSignInt)).replace(" ", "0");
+            }
+            binaryCalculator.printDecimalToBinary("signed magnitude", binaryString);
 
-        //"ones complement"
-        if (binaryNumberUserInput >= 0) {
-            binaryString = String.format("%" + NUMBER_BITS + "s", Integer.toBinaryString(binaryNumberUserInput)).replace(" ", "0");
-        } else {
-            String onesComplementString = Integer.toBinaryString(binaryNumberUserInput-1);
-            binaryString = onesComplementString.substring(onesComplementString.length()-NUMBER_BITS);
+            //"ones complement"
+            if (binaryNumberUserInput >= 0) {
+                binaryString = String.format("%" + NUMBER_BITS + "s", Integer.toBinaryString(binaryNumberUserInput)).replace(" ", "0");
+            } else {
+                String onesComplementString = Integer.toBinaryString(binaryNumberUserInput-1);
+                binaryString = onesComplementString.substring(onesComplementString.length()-NUMBER_BITS);
 
+            }
+            binaryCalculator.printDecimalToBinary("ones complement", binaryString);
+        } else {
+            System.out.println("Lower bound exceeded for signed magnitude.");
+            System.out.println("Lower bound exceeded for ones complement.");
         }
-        binaryCalculator.printDecimalToBinary("ones complement", binaryString);
 
         //"twos complement"
         if (binaryNumberUserInput >= 0) {
