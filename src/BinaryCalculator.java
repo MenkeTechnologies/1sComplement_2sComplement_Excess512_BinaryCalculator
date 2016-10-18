@@ -9,6 +9,7 @@ import java.lang.Exception;
 
 public class BinaryCalculator {
 
+    //bit length can be changed if desired
     public static final int NUMBER_BITS = 10;
     public static final int UPPER_BOUND = (int)Math.pow(2.0, NUMBER_BITS-1)-1;
     public static final int LOWER_BOUND = (int)Math.pow(2.0, NUMBER_BITS-1)*-1;
@@ -188,6 +189,8 @@ public class BinaryCalculator {
     }
 
     public static void main(String[] args) {
+
+        System.out.println("This is a " + NUMBER_BITS + " bit calculator.");
 
         BinaryCalculator binaryCalculator = new BinaryCalculator();
 
